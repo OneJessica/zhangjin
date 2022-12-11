@@ -35,28 +35,28 @@ with col2:
         st.write('道可道，非常道')
 
 
-    with st.expander('See data'):
-        @st.experimental_memo
-        def get_data():
-            df = pd.read_csv("https://storage.googleapis.com/tf-datasets/titanic/train.csv")
-            return df
-        df = get_data()
-        st.dataframe(df,height = 400,width = 1000,)
-        # st.experimental_show(df)
-        choice = st.radio('列分布',df.columns,horizontal = True)
-        st.bar_chart(df[choice])
-        # if choice == 'happy':
-        #     st.write('a great day!')
-    with st.expander('看电影'):
-        filepaths = glob(f'{path}/*')
-        filepath = st.selectbox('请选一个类别',[i.split('/')[-1]for i in filepaths])
-        if filepath:
-            filenames = glob(f'{path}/{filepath}/*')
-            filename = st.selectbox('请选一个视频',[i.split('/')[-1]for i in filenames])
-            if filename:
-                video_file = open(f'{path}/{filepath}/{filename}','rb')
-                video_byte = video_file.read()
-                st.video(video_byte)
+#     with st.expander('See data'):
+#         @st.experimental_memo
+#         def get_data():
+#             df = pd.read_csv("https://storage.googleapis.com/tf-datasets/titanic/train.csv")
+#             return df
+#         df = get_data()
+#         st.dataframe(df,height = 400,width = 1000,)
+#         # st.experimental_show(df)
+#         choice = st.radio('列分布',df.columns,horizontal = True)
+#         st.bar_chart(df[choice])
+#         # if choice == 'happy':
+#         #     st.write('a great day!')
+#     with st.expander('看电影'):
+#         filepaths = glob(f'{path}/*')
+#         filepath = st.selectbox('请选一个类别',[i.split('/')[-1]for i in filepaths])
+#         if filepath:
+#             filenames = glob(f'{path}/{filepath}/*')
+#             filename = st.selectbox('请选一个视频',[i.split('/')[-1]for i in filenames])
+#             if filename:
+#                 video_file = open(f'{path}/{filepath}/{filename}','rb')
+#                 video_byte = video_file.read()
+#                 st.video(video_byte)
 
     # def form_callback():
     #     st.write(st.session_state.my_slider)
